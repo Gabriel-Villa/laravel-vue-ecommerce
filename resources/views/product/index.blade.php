@@ -1,13 +1,13 @@
 @extends('layouts.app', ['footer' => true])
 
 @section('content')
-    <div class="container" style="margin-top: 100px !important;">
+    <div class="container-fluid" style="margin-top: 100px !important;">
         <div class="row">
-            <form method="get" {{ route('products.index') }} class="p-0 m-0 row" style="width: 100% !important;">
+            <form method="get" action="{{ route('products.index') }}" class="p-0 m-0 row" style="width: 100% !important;">
                 <div class="col-md-3">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Category</h5>
+                            <h5 class="card-title">Filter By Category</h5>
                             <hr>
                             @forelse ($categories as $categorie)
                                 <div class="mb-1 form-check">
@@ -25,7 +25,7 @@
                     <hr>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Price</h5>
+                            <h5 class="card-title">Order by Price</h5>
                             <hr>
                             <select class="form-select" aria-label="Default select example" name="price">
                                 <option value="">Select option</option>
@@ -39,7 +39,7 @@
                     <hr>
                     <div class="card">
                         <div class="card-body">
-                            <h5>Search</h5>
+                            <h5>Search Product</h5>
                             <hr>
                             <input class="form-control" type="text" value="{{ request()->input('nombre') }}"
                                 name="name" id="name" placeholder="Search Product">
@@ -78,9 +78,13 @@
                                             @endfor
                                         </div>
                                     </div>
-                                    <div class="container text-center">
+                                    <div class="container-fluid text-center d-flex p-0">
                                         <a href="{{ route('products.show', $product->slug) }}" class="btn btn-warning text-white" type="button">Show</a>
-                                        <add-to-cart-button :product="{{ $product }}" />
+                                        @guest
+                                            <a href="{{ route('login')}}"class="btn btn-danger text-white mx-2" type="button">Please login <i class="fas fa-exclamation mx-1"></i></a>                
+                                        @else
+                                            <add-to-cart-button :product="{{ $product }}" />
+                                        @endauth
                                     </div>
                                 </div>
                             </div>

@@ -23,16 +23,28 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.css" rel="stylesheet" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"></script>
-
+    
 </head>
 
 <body class="p-0 m-0">
     <div id="app">
         @include('partials.nav')
         <main>
+            @if (Route::current()->uri() != '/')
+                <nav aria-label="breadcrumb" style="background: #F7F7F7 !important;padding: 0px 40px;">
+                    <ol class="breadcrumb">
+                        @for($i = 0; $i <= count(Request::segments()); $i++)
+                            <li class="breadcrumb-item"><a href="#">{{Str::upper(Request::segment($i))}}</a></li>
+                        @endfor
+                    </ol>
+                </nav>
+            @endif
+            <x-alerta />
             @yield('content')
+            {{-- <toast /> --}}
         </main>
         @unless(isset($footer))
             @include('partials.footer')

@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-
+        
         <div class="container mt-5 mb-5">
             <div class="card border-0 shadow p-3 mb-5 bg-body rounded">
                 <div class="row g-0">
@@ -45,14 +45,27 @@
                                     @endfor
                                 </div>
                             </div>
-                            <div class="buttons d-flex flex-row mt-5 gap-3">
-                                @auth
-                                    <button class="btn btn-outline-dark">Buy Now</button>
-                                    <add-to-cart-button :product="{{ $product }}" />
-                                @else
-                                    <a href="{{ route('login') }}"
-                                        class="text-red bg-white border-0 text-dark p-0 m-0 text-start">Please login</a>
-                                @endauth
+                            <div class="row">
+                                {{-- <div class="col">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Qty</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div> --}}
+                                <div class="col d-flex justify-content-end">
+                                    <div class="buttons d-flex flex-row mt-1 gap-3">
+                                        @auth
+                                            <add-to-cart-button :product="{{ $product }}" />
+                                            <a href="{{ route('checkout') }}" class="btn btn-secondary m-0 w-25 mt-1" style="height: 34px;">Buy</a>
+                                        @else
+                                            <a href="{{ route('login') }}"
+                                                class="bg-white border-0 text-dark p-0 m-0 text-start text-danger mt-1">Please login</a>
+                                        @endauth
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                         <hr>
@@ -165,7 +178,7 @@
         <br>
 
         <div class="container text-center my-3 mt-4 p-4 bg-white ">
-            <h2 class="font-weight-light">Recomendations</h2>
+            <h2 class="font-weight-light">Related Products</h2>
             <div class="row mx-auto my-auto justify-content-center">
                 <div id="recipeCarousel" style="height: 296px;" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner" role="listbox">
@@ -178,7 +191,7 @@
                                                 class="img-fluid">
                                         </div>
                                         <div class="card-img-overlay">{{ $relate_product->name }}</div>
-                                        <a href="{{ route('products.show', $relate_product->slug) }}" style="position: absolute;top: 87%; right: 1%;" class="btn btn-warning text-white w-25" type="button">Show</a>
+                                        <a href="{{ route('products.show', $relate_product->slug) }}" style="position: absolute;top: 87%; right: 1%;" class="btn btn-warning text-white" type="button">Show</a>
                                     </div>
                                 </div>
                             </div>
@@ -199,8 +212,8 @@
 
     </div>
 
-    <script>
-        let items = document.querySelectorAll('.carousel .carousel-item')
+    <script type="application/javascript">
+        var items = document.querySelectorAll('.carousel .carousel-item');
 
         items.forEach((el) => {
             const minPerSlide = 4

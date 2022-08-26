@@ -47,4 +47,17 @@ class CartController extends Controller
         return $this->qty_products();
 
     }
+
+    public function remove_item(Request $request)
+    {
+        $cart = Cart::ById($request->cart_id);
+        if($cart->first()->qty <= 1){
+            $cart->delete();
+        }else{
+            $cart->decrement('qty');
+        }
+        return $this->qty_products();
+
+    }
+
 }

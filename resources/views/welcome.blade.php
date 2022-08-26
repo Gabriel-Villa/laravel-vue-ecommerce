@@ -4,7 +4,7 @@
 
 @section('content')
 
-    {{-- <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class=""
                 aria-label="Slide 1"></button>
@@ -25,11 +25,11 @@
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="fas fa-arrow-left p-2 rounded-circle text-dark" style="font-size: 20px !important" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="fas fa-arrow-right p-2 rounded-circle text-dark" style="font-size: 20px !important" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
@@ -105,6 +105,6 @@
 
         <hr class="featurette-divider">
 
-    </div> --}}
+    </div>
 
 @endsection

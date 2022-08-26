@@ -1,48 +1,48 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <!-- Container wrapper -->
     <div class="container-fluid">
-        <!-- Toggle button -->
+
         <button class="navbar-toggler px-0" type="button" data-mdb-toggle="collapse"
             data-mdb-target="#navbarExampleOnHover" aria-controls="navbarExampleOnHover" aria-expanded="false"
             aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
 
-        <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarExampleOnHover">
-            <!-- Left links -->
+
             <a class="navbar-brand mt-2 mt-lg-0" href="{{ route('home') }}">
-                <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15"
-                    alt="MDB Logo" loading="lazy" />
+                MY ECOMMERCE
             </a>
 
             <ul class="navbar-nav me-auto ps-lg-0" style="padding-left: 0.15rem">
                 <li class="nav-item dropdown dropdown-hover position-static">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownWomen" role="button">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownWomen" role="button" style="padding: 10px 20px;">
                         Women
                     </a>
                     @include('partials.drop-down-menu')
                 </li>
                 <li class="nav-item dropdown dropdown-hover position-static">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMan" role="button">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMan" role="button" style="padding: 10px 20px;">
                         Man
                     </a>
                     @include('partials.drop-down-menu')
                 </li>
             </ul>
-            <!-- Left links -->
 
-            <!-- Right elements -->
             <div class="d-flex align-items-center">
-                <!-- Icon -->
                 <a class="text-reset me-3" href="#">
-                    {{-- <cart-icon></cart-icon> --}}
+                    @auth
+                        <cart-icon></cart-icon>
+                    @endauth
                 </a>
 
-                <!-- Avatar -->
                 @guest
-                    <div class="dropdown">
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                    <div class="dropdown d-flex">
+                        <a class="dropdown-toggle d-flex align-items-center hidden-arrow text-white" href="#"
+                            id="navbarDropdownLogin" role="button" data-mdb-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fas fa-cog"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownLogin">
                             <li>
                                 <a class="dropdown-item" href="{{ route('login') }}">Login</a>
                             </li>
@@ -59,18 +59,18 @@
                         </ul>
                     </div>
                 @else
-                    <div class="dropdown">
-                        <a class="dropdown-toggle d-flex align-items-center hidden-arrow text-white border border-white rounded-circle" href="#"
+                    <div class="dropdown d-flex">
+                        <a class="dropdown-toggle d-flex align-items-center hidden-arrow text-white" href="#"
                             id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown"
-                            aria-expanded="false">
+                            aria-expanded="false" style="border: 1px solid white; border-radius: 100%; padding: 5px 13px;">
                             {{ substr(Auth::user()->name, 0, 1) }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                            <li>
+                            {{-- <li>
                                 <a class="dropdown-item" href="#">My profile</a>
-                            </li>
+                            </li> --}}
                             <li>
-                                <a class="dropdown-item" href="#">Settings</a>
+                                <a class="dropdown-item" href="{{ route('cart') }}">Cart</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"

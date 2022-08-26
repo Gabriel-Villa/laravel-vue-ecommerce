@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="btn btn-success" @click="addToCart">
+    <button type="button" class="btn btn-success m-0 mx-2" style="height: 34px;" @click="addToCart">
         Add
     </button>
 </template>

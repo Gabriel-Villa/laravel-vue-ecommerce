@@ -42,4 +42,9 @@ return [
         'redirect' =>  env('APP_URL')."/login/callback",
     ],
 
+    'mercadopago' => [
+        'key' =>  env('MP_PRODUCTION_PUBLIC_KEY'),
+        'token' => env('MP_PRODUCTION_ACCESS_TOKEN')
+    ]
+
 ];

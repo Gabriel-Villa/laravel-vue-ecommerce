@@ -22,6 +22,11 @@ class Cart extends Model
         return $this->hasOne(Product::class, 'product_id', 'productId');
     }
 
+    public function scopeById($query, $cart_id)
+    {
+        return $query->where('cart.cart_id', $cart_id);
+    }
+
     public function scopeByUser($query, $user_id)
     {
         return $query->where('cart.userId', $user_id);

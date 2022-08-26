@@ -4,6 +4,6 @@
     @if (!$carts->isEmpty())
         <cart-items :carts="{{ $carts }}" />
     @else
-        <td colspan="5">Sin Productos</td>
+        <p class="text-danger text-center">Sin Productos</p>
     @endif
 @endsection
